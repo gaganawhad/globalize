@@ -4,6 +4,7 @@ gemspec
 
 # Per https://github.com/bmabey/database_cleaner/issues/224
 gem 'database_cleaner', github: 'bmabey/database_cleaner', branch: 'master'
+gem 'debugger'
 
 platforms :rbx do
   gem 'rubysl', '~> 2.0'

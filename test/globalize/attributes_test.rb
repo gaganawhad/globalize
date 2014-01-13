@@ -208,7 +208,6 @@ class AttributesTest < MiniTest::Spec
 
   describe 'model with attribute column in both model and translation table' do
     it 'does not update original columns with content not in the default locale' do
-      skip 'need to fix before we release 4.0.0'
       task = Task.create :name => 'Title'
 
       task.translated_attribute_names # this should not make the test fail, but does

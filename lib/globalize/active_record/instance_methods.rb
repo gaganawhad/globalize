@@ -144,6 +144,11 @@ module Globalize
 
       def save(*)
         Globalize.with_locale(read_attribute(:locale) || I18n.default_locale) do
+          unless Globalize.locale == I18n.default_locale
+            translated_attributes.keys.each do |attr|
+              self.changed_attributes.delete(attr)
+            end
+          end
           super
         end
       end
