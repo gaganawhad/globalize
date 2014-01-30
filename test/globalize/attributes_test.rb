@@ -221,11 +221,11 @@ class AttributesTest < MiniTest::Spec
     it 'updates original columns with content in the default locale' do
       task = Task.create
 
-      I18n.locale = :de
-      task.update_attributes :name => 'Neues Titel'
-
       I18n.locale = :en
       task.update_attributes :name => 'New Title'
+
+      I18n.locale = :de
+      task.update_attributes :name => 'Neues Titel'
 
       legacy_task = LegacyTask.find(task.id)
       assert_equal 'New Title', legacy_task.name
