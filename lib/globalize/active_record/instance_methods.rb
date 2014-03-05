@@ -144,6 +144,12 @@ module Globalize
 
       def save(*)
         Globalize.with_locale(read_attribute(:locale) || I18n.default_locale) do
+          #What the following hack does is that it saves attribtes to the parent model only when the Globalize.locale matches the default locale.
+          unless Globalize.locale == I18n.default_locale
+            translated_attributes.keys.each do |attr|
+              self.changed_attributes.delete(attr)
+            end
+          end
           super
         end
       end
